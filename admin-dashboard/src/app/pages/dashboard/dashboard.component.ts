@@ -6,6 +6,7 @@ import { AuthService, UserPayload } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
 import { FormsModule } from '@angular/forms';
 import { DatePipe, TitleCasePipe } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 interface UserRecord {
   _id: string;
@@ -59,7 +60,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private readonly API = 'http://localhost:3000/api';
+  private readonly API = environment.apiUrl;
 
   constructor(
     private readonly auth: AuthService,

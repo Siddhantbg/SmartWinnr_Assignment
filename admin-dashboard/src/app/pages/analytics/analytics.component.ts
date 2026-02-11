@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ToastService } from '../../services/toast.service';
+import { environment } from '../../../environments/environment';
 import {
   Chart,
   LineController,
@@ -88,7 +89,7 @@ export class AnalyticsComponent implements AfterViewInit, OnDestroy {
   private pollTimer: ReturnType<typeof setInterval> | null = null;
   private statLottiesLoaded = false;
 
-  private readonly API = 'http://localhost:3000/api';
+  private readonly API = environment.apiUrl;
   readonly POLL_INTERVAL_MS = 30_000;
 
   constructor(

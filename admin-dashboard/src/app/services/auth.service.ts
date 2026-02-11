@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface UserPayload {
   id: string;
@@ -21,7 +22,7 @@ export interface AuthResponse {
 export type LoginResponse = AuthResponse;
 
 const TOKEN_KEY = 'auth_token';
-const API_URL = 'http://localhost:3000/api';
+const API_URL = environment.apiUrl;
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
