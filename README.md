@@ -22,7 +22,6 @@ A full-stack admin dashboard built with the **MEAN stack** (MongoDB, Express, An
 | Chart.js | 4.5 | Interactive analytics charts (line, bar, doughnut) |
 | Lottie Web | 5.13 | JSON-based animations |
 | Three.js | 0.182 | WebGL floating lines background |
-| RxJS | 7.8 | Reactive HTTP & state management |
 
 ### Backend
 
