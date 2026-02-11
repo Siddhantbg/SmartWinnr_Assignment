@@ -2,6 +2,8 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/admin-dashboard/browser",
   "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
