@@ -121,6 +121,7 @@ flowchart LR
     L --> G
     G -->|JSON Response| F
     F --> A
+```
 
 ## Project Structure
 
