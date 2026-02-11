@@ -1,0 +1,106 @@
+<div class="auth-wrapper">
+  <app-floating-lines
+    [enabledWaves]="['top', 'middle', 'bottom']"
+    [lineCount]="10"
+    [lineDistance]="5"
+    [bendRadius]="5"
+    [bendStrength]="-0.5"
+    [interactive]="true"
+    [parallax]="true"
+  />
+
+  <div class="auth-overlay">
+    <div class="auth-card">
+
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-logo">
+          <div #lottieIcon class="lottie-icon"></div>
+        </div>
+        <h1>Welcome</h1>
+        <p>Create your account to get started</p>
+      </div>
+
+      <!-- Form -->
+      <form class="auth-form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input id="name" type="text" name="name" [(ngModel)]="name"
+            placeholder="Your name" autocomplete="name" required [disabled]="isLoading()" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input id="email" type="email" name="email" [(ngModel)]="email"
+            placeholder="you@example.com" autocomplete="email" required [disabled]="isLoading()" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input id="password" [type]="showPassword() ? 'text' : 'password'" name="password"
+              [(ngModel)]="password" placeholder="Min. 6 characters"
+              autocomplete="new-password" required [disabled]="isLoading()" />
+            <button type="button" class="toggle-password" (click)="togglePassword()" aria-label="Toggle">
+              @if (showPassword()) {
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+              } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
+                </svg>
+              }
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm">Confirm password</label>
+          <div class="password-wrapper">
+            <input id="confirm" [type]="showConfirm() ? 'text' : 'password'" name="confirmPassword"
+              [(ngModel)]="confirmPassword" placeholder="Repeat password"
+              autocomplete="new-password" required [disabled]="isLoading()" />
+            <button type="button" class="toggle-password" (click)="toggleConfirm()" aria-label="Toggle">
+              @if (showConfirm()) {
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+              } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
+                </svg>
+              }
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="isLoading()">
+          @if (isLoading()) {
+            <span class="spinner"></span>
+            Creating account...
+          } @else {
+            Create account
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+            </svg>
+          }
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p>Already have an account? <a routerLink="/login" class="link">Sign in</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="landing-wrapper">
+  <app-floating-lines
+    [enabledWaves]="['top', 'middle', 'bottom']"
+    [lineCount]="13"
+    [lineDistance]="5"
+    [bendRadius]="5"
+    [bendStrength]="-0.5"
+    [interactive]="true"
+    [parallax]="true"
+  />
+
+  <div class="landing-overlay">
+    <div class="landing-badge">
+      <span #lottieAdminDashboard class="lottie-admin-dashboard" style="width:48px;height:48px;display:inline-block;vertical-align:middle;margin-right:0.625rem;"></span>
+      Admin Dashboard
+    </div>
+    <h1 class="landing-title">Manage your team<br />with confidence</h1>
+    <p class="landing-subtitle">
+      Role-based access control, user management,<br />built on the MEAN stack.
+    </p>
+
+    <div class="landing-buttons">
+      <!-- Register-->
+      <a routerLink="/register" class="btn btn-primary">
+        <span #lottiePencilPaper class="btn-lottie"></span>
+        Get Started
+      </a>
+
+      <!-- Login -->
+      <a routerLink="/login" class="btn btn-secondary">
+        <span #lottiePencil class="btn-lottie"></span>
+        Sign In
+      </a>
+    </div>
+
+    <p class="landing-note">Angular 21 &bull; Express &bull; MongoDB</p>
+  </div>
+</div>

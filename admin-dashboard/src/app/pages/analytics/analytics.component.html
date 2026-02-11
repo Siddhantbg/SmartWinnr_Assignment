@@ -1,0 +1,142 @@
+<div class="analytics-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="/assets/logo.png" alt="SmartWinnr" class="sidebar-logo-img" />
+        <span>SmartWinnr</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item" routerLink="/dashboard">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        Dashboard
+      </a>
+      <a class="nav-item active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" />
+        </svg>
+        Analytics
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="logout-btn" (click)="logout()" title="Logout">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-bar">
+      <div>
+        <h1 class="page-title">Analytics</h1>
+        <p class="page-subtitle">
+          @if (lastUpdated()) {
+            Last updated {{ lastUpdated()?.toLocaleTimeString() }} · auto-refreshes every 30 s
+          } @else {
+            Loading metrics&hellip;
+          }
+        </p>
+      </div>
+      <button class="refresh-btn" (click)="manualRefresh()" [disabled]="isLoading()" title="Refresh now">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+          [class.spinning]="isLoading()">
+          <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+          <path d="M3 3v5h5" />
+          <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+          <path d="M16 16h5v5" />
+        </svg>
+        Refresh
+      </button>
+    </header>
+
+    <!-- Overview stat cards -->
+    @if (overview()) {
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon indigo stat-lottie" #totalUsersLottie></div>
+          <div>
+            <p class="stat-label">Total Users</p>
+            <p class="stat-value">{{ overview()?.totalUsers }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon purple stat-lottie" #adminsLottie></div>
+          <div>
+            <p class="stat-label">Admins</p>
+            <p class="stat-value">{{ overview()?.adminCount }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green stat-lottie" #newWeekLottie></div>
+          <div>
+            <p class="stat-label">New This Week</p>
+            <p class="stat-value">{{ overview()?.newThisWeek }}</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon blue stat-lottie" #newMonthLottie></div>
+          <div>
+            <p class="stat-label">New This Month</p>
+            <p class="stat-value">{{ overview()?.newThisMonth }}</p>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Charts grid -->
+    <div class="charts-grid">
+      <!-- Line chart -->
+      <div class="chart-card wide" [class.loading]="isLoading()">
+        <div class="chart-header">
+          <h2>User Growth</h2>
+          <span class="chart-badge indigo">Cumulative · 12 months</span>
+        </div>
+        <div class="chart-wrapper">
+          <canvas #lineCanvas></canvas>
+        </div>
+      </div>
+
+      <!-- Bar chart -->
+      <div class="chart-card wide" [class.loading]="isLoading()">
+        <div class="chart-header">
+          <h2>Monthly Signups</h2>
+          <span class="chart-badge purple">New registrations · 12 months</span>
+        </div>
+        <div class="chart-wrapper">
+          <canvas #barCanvas></canvas>
+        </div>
+      </div>
+
+      <!-- Doughnut chart -->
+      <div class="chart-card narrow" [class.loading]="isLoading()">
+        <div class="chart-header">
+          <h2>Role Distribution</h2>
+          <span class="chart-badge green">Admin vs User</span>
+        </div>
+        <div class="chart-wrapper doughnut-wrapper">
+          <canvas #doughnutCanvas></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
