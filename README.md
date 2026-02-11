@@ -41,7 +41,7 @@ A full-stack admin dashboard built with the **MEAN stack** (MongoDB, Express, An
 |---|---|
 | Vercel | Frontend hosting |
 | Render | Backend hosting |
-| MongoDB Atlas |
+| MongoDB Atlas | Cloud database |
 
 ## Features
 
