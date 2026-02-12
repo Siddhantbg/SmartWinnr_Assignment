@@ -11,6 +11,29 @@ A full-stack admin dashboard built with the **MEAN stack** (MongoDB, Express, An
 - **Admin:** `admin@smartwinnr.com` / `admin123`
 - **User:** `user@smartwinnr.com` / `user123`
 
+## Screenshots
+
+### Landing Page
+![Landing Page](site-preview%20assets/Landing.png)
+
+### Register
+![Register](site-preview%20assets/Register.png)
+
+### Sign In
+![Sign In](site-preview%20assets/SignIn.png)
+
+### Admin Dashboard
+![Admin Dashboard](site-preview%20assets/AdminDashboard.png)
+
+### Admin Analytics
+![Admin Analytics](site-preview%20assets/AdminAnalytics.png)
+
+### User Dashboard (Quiz)
+![User Dashboard](site-preview%20assets/UserDashboard.png)
+
+### User Dashboard (After Response)
+![User Dashboard After Response](site-preview%20assets/UserDashboardAfterresponse.png)
+
 ## Tech Stack
 
 ### Frontend
