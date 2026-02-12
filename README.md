@@ -134,24 +134,24 @@ SmartWinnr_Assignment/
 │   │   │   │   ├── landing/     # WebGL landing page
 │   │   │   │   ├── login/       # Sign in with Lottie icon
 │   │   │   │   ├── register/    # Sign up with Lottie icon
-│   │   │   │   ├── dashboard/   # Admin user mgmt / User quiz
+│   │   │   │   ├── dashboard/   # Admin user mgmt
 │   │   │   │   └── analytics/   # Charts & stats (admin only)
 │   │   │   ├── components/
 │   │   │   │   ├── floating-lines/  # Three.js WebGL component
 │   │   │   │   └── toast/           # Toast notifications
 │   │   │   ├── services/        # AuthService, ToastService
 │   │   │   ├── guards/          # Auth & role route guards
-│   │   │   ├── interceptors/    # JWT HTTP interceptor
-│   │   │   └── app.routes.ts    # Lazy-loaded routes
-│   │   └── environments/        # Dev & production API URLs
-│   ├── angular.json
+│   │   │   ├── interceptors/    # JWT auth header
+│   │   │   └── app.routes.ts 
+│   │   └── styles/        # Global styles 
+│   ├── package.json
 │   └── vercel.json
-├── backend/                     # Express + TypeScript backend
+├── backend/                     # Express backend
 │   ├── src/
 │   │   ├── models/              # Mongoose User schema
 │   │   ├── routes/
-│   │   │   ├── auth.ts          # Login, register, /me
-│   │   │   ├── admin.ts         # CRUD users, role toggle
+│   │   │   ├── auth.ts          # Login, register
+│   │   │   ├── admin.ts         # CRUD operations, role toggle
 │   │   │   └── analytics.ts     # Overview, signups, distribution
 │   │   ├── middleware/auth.ts   # JWT verify & admin check
 │   │   └── server.ts            # Express app entry point
